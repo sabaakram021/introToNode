@@ -1,12 +1,16 @@
 //move a file
 
-let fs = require("fs");
-let path = require("path");
+let path = require('path');
+let fs = require('fs');
 
-let srcPath = path.join(__dirname,"file1.txt");
-// console.log(srcPath);
-let destPath = path.join(__dirname,"newFolder","file1.txt");
-// console.log(destPath);
-fs.copyFileSync(srcPath,destPath);
+let soucrcePath = path.join(__dirname,'..','unorganised','random.pdf');
+// console.log(soucrcePath);
 
-fs.unlinkSync(srcPath);
+let destinationPath = path.join(__dirname,'organize','documents','random.pdf');
+// console.log(destinationPath);
+
+// fs.rename(destinationPath,soucrcePath,(err)=>{
+// })
+
+fs.copyFileSync(destinationPath,soucrcePath);
+fs.unlinkSync(destinationPath);
