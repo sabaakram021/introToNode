@@ -4,12 +4,21 @@
 let path = require('path');
 let fs = require('fs');
 let arr = ['audio','video','image','software','documents','applications','other'];
-let extension  = ['.mp3','.mp4','.png','.exe','.doc','.zip','.pdf'];
+let fileNames  = ['abc','def','egf','zue'];
+let extension = ['.mp3','.mp4','.jpg','.exe','.pdf','.apk','.rar'];
 // console.log(__dirname);
-for(let folderName of arr){
-    let folderPath = path.join(__dirname,folderName);
+let organizePath = path.join(__dirname,"organize");
+if(!fs.existsSync(organizePath))
+    fs.mkdirSync(organizePath);
+for(let i=0;i<arr.length;i++){
+    let folderPath = path.join(organizePath,arr[i]);
     if(!fs.existsSync(folderPath)){
         fs.mkdirSync(folderPath);
+    }
+    for(let j=0;j<fileNames.length;j++){
+        let fileName = fileNames[j]+extension[i];
+        let filePath = path.join(folderPath,fileName);
+        fs.writeFileSync(filePath,"file has been created");
     }
 }
 
